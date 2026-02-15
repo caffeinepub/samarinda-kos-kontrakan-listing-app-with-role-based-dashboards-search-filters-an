@@ -1,0 +1,67 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Public listings: fixed ordered location options + multi-select with All locations behavior",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Convert the public listings Location filter UI to multi-select while preserving an explicit \"All locations\" option with correct fallback behavior and English labels.",
+      "acceptanceCriteria": [
+        "In the public listings filters UI, users can select multiple locations at the same time.",
+        "There is an \"All locations\" option that remains available; when selected, no location filtering is applied.",
+        "If \"All locations\" is selected and the user selects any specific location(s), \"All locations\" becomes deselected automatically.",
+        "If the user deselects all specific locations, the filter falls back to \"All locations\" (no location filtering).",
+        "All user-facing labels in the location filter are in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/listings/FiltersPanel.tsx",
+          "operation": "modify",
+          "description": "Update FilterState to represent multi-select locations (e.g., a selectedLocations string[] where empty implies \"All locations\"). Replace the current single-select Location <Select> with a checkbox-based multi-select UI that includes an explicit \"All locations\" control and enforces the required toggle/fallback behaviors. Keep all user-facing labels in English."
+        },
+        {
+          "path": "frontend/src/pages/PublicListingsPage.tsx",
+          "operation": "modify",
+          "description": "Update the initial filter state and the handler wiring to match the new multi-select location state shape coming from FiltersPanel, ensuring the UI and state transitions reflect the required \"All locations\" behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Replace Location filter options with the fixed 10-location ordered list, always shown after \"All locations\" and not derived from backend-provided values.",
+      "acceptanceCriteria": [
+        "The Location filter shows \"All locations\" first, followed by the 10 specified locations.",
+        "The 10 specified locations appear in the exact order provided by the user.",
+        "The filter does not add, remove, or reorder these options based on backend-provided locations."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PublicListingsPage.tsx",
+          "operation": "modify",
+          "description": "Stop sourcing the Location filter options from backend-provided locations for the public listings page. Define and use a fixed, ordered list constant: Samarinda Kota, Samarinda Ulu, Samarinda Ilir, Samarinda Seberang, Samarinda Utara, Sungai Pinang, Sungai Kunjang, Palaran, Sambutan, Loa Janan Ilir; and pass this list to FiltersPanel so it renders after \"All locations\" in exactly this order."
+        },
+        {
+          "path": "frontend/src/components/listings/FiltersPanel.tsx",
+          "operation": "modify",
+          "description": "Ensure the Location filter renders \"All locations\" first and then renders the provided fixed locations array in order without re-sorting or augmenting it."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Update public listings filtering logic to support multi-select location state while keeping all other filters, sorting, and pagination behavior unchanged.",
+      "acceptanceCriteria": [
+        "When one or more specific locations are selected, a listing is included if its location matches any selected location.",
+        "When \"All locations\" is active, listings are not filtered by location.",
+        "Other filters (price range, property type, facilities, rental durations, search term, sorting, pagination) continue to behave as before."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PublicListingsPage.tsx",
+          "operation": "modify",
+          "description": "Update the in-memory filtering logic to interpret the new multi-select location state: if no specific locations are selected (\"All locations\" active), skip location filtering; otherwise include listings whose listing.location matches any selected location. Keep all other filter criteria, sorting, and pagination behavior unchanged."
+        }
+      ]
+    }
+  ]
+}

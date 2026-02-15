@@ -1,0 +1,67 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-public-listings-page-location-filter-to-support-multi-select-while-keeping-an-explicit-all-locations-option-that-disables-location-filtering",
+      "featureTitle": "Update the public listings page Location filter to support multi-select while keeping an explicit \"All locations\" option that disables location filtering.",
+      "files": [
+        "frontend/src/components/listings/FiltersPanel.tsx",
+        "frontend/src/pages/PublicListingsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-the-location-filter-options-list-with-a-fixed-ordered-list-samarinda-kota-samarinda-ulu-samarinda-ilir-samarinda-seberang-samarinda-utara-sungai-pinang-sungai-kunjang-palaran-sambutan-loa-janan-ilir-and-render-them-in-exactly-this-order-after-all-locations",
+      "featureTitle": "Replace the Location filter options list with a fixed, ordered list: Samarinda Kota, Samarinda Ulu, Samarinda Ilir, Samarinda Seberang, Samarinda Utara, Sungai Pinang, Sungai Kunjang, Palaran, Sambutan, Loa Janan Ilir; and render them in exactly this order after \"All locations\".",
+      "files": [
+        "frontend/src/components/listings/FiltersPanel.tsx",
+        "frontend/src/pages/PublicListingsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-public-listings-filtering-logic-to-work-with-the-new-multi-select-location-filter-state-multiple-selected-locations",
+      "featureTitle": "Update the public listings filtering logic to work with the new multi-select Location filter state (multiple selected locations).",
+      "files": [
+        "frontend/src/pages/PublicListingsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

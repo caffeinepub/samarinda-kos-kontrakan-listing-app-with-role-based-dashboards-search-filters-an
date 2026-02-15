@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Aplikasi informasi kos & kontrakan untuk area Samarinda, Kaltim dengan tampilan seperti MamiKos bernuansa biru dan harga dalam Rupiah. Mendukung pengguna umum untuk pencarian & filter lengkap, serta dashboard login terpisah untuk pemilik properti dan admin/pemilik website. Pemilik properti dapat membuat, mengedit, menghapus postingan dan upload foto, namun perubahan/hapus memerlukan persetujuan admin sebelum tampil. Admin juga dapat membuat postingan dan memverifikasi perubahan.",
+  "architectural_notes": [
+    "Perubahan edit/hapus posting oleh pemilik properti harus melalui status menunggu persetujuan admin sebelum dipublikasikan.",
+    "Filter lokasi di pencarian publik: opsi 'All Location' tetap ada; 10 lokasi tetap (urutan fixed) dan mendukung multi-select."
+  ],
+  "known_issues": [
+    "Proses build/generasi aplikasi sebelumnya gagal (\"AI struggled\"), perlu dicoba generate ulang."
+  ],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-the-public-facing-experience-for-browsing-kos-kontrakan-listings-in-samarinda-east-kalimantan-including-a-home-listings-page-with-a-search-bar-filters-for-price-location-within-samarinda-property-type-kos-kontrakan-facilities-and-rental-duration-daily-monthly-yearly-sortable-paginated-results-and-a-listing-detail-page-showing-title-price-in-rupiah-location-facilities-duration-options-description-and-photo-gallery",
+      "title": "Create the public-facing experience for browsing kos/kontrakan listings in Samarinda, East Kalimantan, including: a home/listings page with a search bar; filters for price, location within Samarinda, property type (kos/kontrakan), facilities, and rental duration (daily/monthly/yearly); sortable paginated results; and a listing detail page showing title, price in Rupiah, location, facilities, duration options, description, and photo gallery.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-role-based-authentication-and-authorization-with-two-separate-account-types-1-property-owner-and-2-website-owner-admin-provide-separate-dashboard-entry-points-and-route-protection-so-only-authenticated-users-with-the-right-role-can-access-owner-admin-pages",
+      "title": "Implement role-based authentication and authorization with two separate account types: (1) property owner and (2) website owner/admin. Provide separate dashboard entry points and route protection so only authenticated users with the right role can access owner/admin pages.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-property-owner-dashboard-features-to-create-new-listings-and-manage-only-their-own-listings-owners-must-be-able-to-create-listings-upload-and-manage-listing-photos-request-edits-request-deletions-and-view-the-status-of-pending-requests-awaiting-approval-approved-rejected-with-admin-feedback-if-rejected",
+      "title": "Add property owner dashboard features to create new listings and manage only their own listings. Owners must be able to: create listings; upload and manage listing photos; request edits; request deletions; and view the status of pending requests (awaiting approval / approved / rejected) with admin feedback if rejected.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-admin-dashboard-for-website-owner-admin-to-create-listings-view-all-listings-view-all-pending-edit-delete-requests-approve-or-reject-each-request-and-on-approval-apply-changes-or-deletion-to-the-public-listing-admin-must-be-able-to-provide-a-rejection-reason-that-is-visible-to-the-requesting-owner",
+      "title": "Add an admin dashboard for website owner/admin to: create listings; view all listings; view all pending edit/delete requests; approve or reject each request; and on approval apply changes (or deletion) to the public listing. Admin must be able to provide a rejection reason that is visible to the requesting owner.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-photo-upload-storage-and-retrieval-so-owners-admins-can-upload-listing-photos-from-the-dashboard-and-public-users-can-view-them-on-listing-pages-ensure-uploaded-images-have-basic-validation-file-type-and-size-limits-and-are-reliably-retrievable-after-upload",
+      "title": "Implement photo upload, storage, and retrieval so owners/admins can upload listing photos from the dashboard and public users can view them on listing pages. Ensure uploaded images have basic validation (file type and size limits) and are reliably retrievable after upload.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-mamikos-inspired-ui-with-a-blue-primary-color-palette-across-the-public-site-and-dashboards-using-a-consistent-component-style-cards-filters-buttons-typography-and-responsive-layouts-for-mobile-and-desktop",
+      "title": "Create a MamiKos-inspired UI with a blue primary color palette across the public site and dashboards, using a consistent component style (cards, filters, buttons, typography) and responsive layouts for mobile and desktop.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-public-listings-page-location-filter-to-support-multi-select-while-keeping-an-explicit-all-locations-option-that-disables-location-filtering",
+      "title": "Update the public listings page Location filter to support multi-select while keeping an explicit \"All locations\" option that disables location filtering.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-location-filter-options-list-with-a-fixed-ordered-list-samarinda-kota-samarinda-ulu-samarinda-ilir-samarinda-seberang-samarinda-utara-sungai-pinang-sungai-kunjang-palaran-sambutan-loa-janan-ilir-and-render-them-in-exactly-this-order-after-all-locations",
+      "title": "Replace the Location filter options list with a fixed, ordered list: Samarinda Kota, Samarinda Ulu, Samarinda Ilir, Samarinda Seberang, Samarinda Utara, Sungai Pinang, Sungai Kunjang, Palaran, Sambutan, Loa Janan Ilir; and render them in exactly this order after \"All locations\".",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-public-listings-filtering-logic-to-work-with-the-new-multi-select-location-filter-state-multiple-selected-locations",
+      "title": "Update the public listings filtering logic to work with the new multi-select Location filter state (multiple selected locations).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "UI aplikasi seperti MamiKos dengan warna dasar biru dan format harga Rupiah",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Akun & dashboard login terpisah untuk pemilik properti dan admin/pemilik website",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Manajemen posting kos/kontrakan (buat, edit, hapus) dengan upload foto",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Workflow persetujuan admin untuk edit/hapus posting sebelum perubahan tampil",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Admin dapat membuat posting, memverifikasi perubahan, dan mengelola posting/akun",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Fitur pencarian & filter untuk pengguna umum (harga, lokasi Samarinda, tipe kos/kontrakan, fasilitas, durasi sewa harian/bulanan/tahunan)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Define and persist the backend data model and logic for: users with roles (Owner/Admin); listings (kos/kontrakan) including price (Rupiah), Samarinda location field, type, facilities list, rental duration options (daily/monthly/yearly), description, and photo references; and a moderation workflow for pending edit/delete requests tied to a listing and requester.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Update filter lokasi: pertahankan opsi 'All Location', tambah 10 kecamatan/area Samarinda sesuai urutan yang diberikan, dan dukung multi-select",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Samarinda Kos & Kontrakan Listing App with Role-Based Dashboards, Search/Filters, and Admin Approval Workflow",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

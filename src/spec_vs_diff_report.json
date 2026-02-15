@@ -1,0 +1,25 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T02:50:19.241Z",
+  "summary": "Diff implements a checkbox-based, multi-select Location filter where an empty selection represents \"All locations\" and updates the public listings filtering logic to match any selected locations. A fixed ordered list of 10 Samarinda locations is introduced in PublicListingsPage, but due to truncation it is not fully verifiable that this fixed list is the only source used to render Location options in the FiltersPanel UI.",
+  "missing_requirements": [
+    {
+      "id": "REQ-9",
+      "requirement": "Replace the Location filter options list with a fixed, ordered list of 10 specified locations, rendered after \"All locations\", and do not add/remove/reorder based on backend-provided locations.",
+      "reason": "PublicListingsPage.tsx defines FIXED_LOCATIONS in the required order, and FiltersPanel renders whatever it receives via its `locations` prop. However, the diff is truncated before showing that `FIXED_LOCATIONS` is actually passed into FiltersPanel and that no backend-derived/dynamic location list is used instead.",
+      "evidence": [
+        "frontend/src/pages/PublicListingsPage.tsx (truncated)",
+        "frontend/src/components/listings/FiltersPanel.tsx (truncated)"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.62,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/listings/FiltersPanel.tsx",
+    "frontend/src/pages/PublicListingsPage.tsx",
+    "project_state.json"
+  ]
+}

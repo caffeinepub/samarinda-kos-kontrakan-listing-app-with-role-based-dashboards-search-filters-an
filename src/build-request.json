@@ -1,0 +1,79 @@
+{
+  "kind": "build_request",
+  "title": "Update public listings location filter to fixed 10 options + multi-select (keep All locations)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Update the public listings page Location filter to support multi-select while keeping an explicit \"All locations\" option that disables location filtering.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages-5"
+        ],
+        "quotes": [
+          "1. tidak, pilihan all location tetap ada.\n2. iya, dipakai sesuai urutan.\n3. bisa dibuat multi-select"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In the public listings filters UI, users can select multiple locations at the same time.",
+        "There is an \"All locations\" option that remains available; when selected, no location filtering is applied.",
+        "If \"All locations\" is selected and the user selects any specific location(s), \"All locations\" becomes deselected automatically.",
+        "If the user deselects all specific locations, the filter falls back to \"All locations\" (no location filtering).",
+        "All user-facing labels in the location filter are in English."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Replace the Location filter options list with a fixed, ordered list: Samarinda Kota, Samarinda Ulu, Samarinda Ilir, Samarinda Seberang, Samarinda Utara, Sungai Pinang, Sungai Kunjang, Palaran, Sambutan, Loa Janan Ilir; and render them in exactly this order after \"All locations\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages-2",
+          "recent-messages-5"
+        ],
+        "quotes": [
+          "buat pilihan filter lokasi menjadi 10 pilihan sebagai berikut Berikut\nSamarinda Kota\nSamarinda Ulu\nSamarinda Ilir\nSamarinda Seberang\nSamarinda Utara\nSungai Pinang\nSungai Kunjang\nPalaran\nSambutan\nLoa Janan Ilir",
+          "2. iya, dipakai sesuai urutan."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Location filter shows \"All locations\" first, followed by the 10 specified locations.",
+        "The 10 specified locations appear in the exact order provided by the user.",
+        "The filter does not add, remove, or reorder these options based on backend-provided locations."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Update the public listings filtering logic to work with the new multi-select Location filter state (multiple selected locations).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages-5"
+        ],
+        "quotes": [
+          "3. bisa dibuat multi-select"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When one or more specific locations are selected, a listing is included if its location matches any selected location.",
+        "When \"All locations\" is active, listings are not filtered by location.",
+        "Other filters (price range, property type, facilities, rental durations, search term, sorting, pagination) continue to behave as before."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui (shadcn components are read-only in this environment).",
+    "Do not edit frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, or frontend/src/main.tsx (immutable paths).",
+    "Keep the backend as a single Motoko actor; do not introduce additional backend services."
+  ],
+  "nonGoals": [
+    "Do not change the backend listing schema or stored listing location values.",
+    "Do not add new filters beyond updating the existing Location filter behavior/options.",
+    "Do not implement third-party integrations or external databases."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
